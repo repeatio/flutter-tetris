@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:overlay_support/overlay_support.dart';
+import 'package:flutter_web/material.dart';
+import 'package:flutter_web/services.dart';
 
 const HONG_BAO = "打开支付宝首页搜“621412820”领红包，领到大红包的小伙伴赶紧使用哦！";
 
@@ -38,7 +37,10 @@ class DonationDialog extends StatelessWidget {
             await Clipboard.setData(ClipboardData(text: HONG_BAO));
             final data = await Clipboard.getData(Clipboard.kTextPlain);
             if (data.text == HONG_BAO) {
-              showSimpleNotification(context, Text("已复制到粘贴板 （≧ｙ≦＊）"));
+              Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text("已复制到粘贴板 （≧ｙ≦＊）"),
+                duration: const Duration(milliseconds: 1500),
+              ));
             } else {
               await showDialog(
                   context: context,

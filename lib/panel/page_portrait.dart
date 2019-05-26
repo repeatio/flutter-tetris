@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:tetris/generated/i18n.dart';
 import 'package:tetris/income/donation_dialog.dart';
 import 'package:tetris/main.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:tetris/gamer/gamer.dart';
 import 'package:tetris/generated/i18n.dart';
 

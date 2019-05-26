@@ -1,17 +1,12 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_web/material.dart';
 import 'package:tetris/gamer/gamer.dart';
-import 'package:tetris/generated/i18n.dart';
 import 'package:tetris/material/audios.dart';
 import 'package:tetris/panel/page_portrait.dart';
 
 import 'gamer/keyboard.dart';
+import 'generated/i18n.dart';
 
 void main() {
-  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   _disableDebugPrint();
   runApp(MyApp());
 }
@@ -39,8 +34,6 @@ class MyApp extends StatelessWidget {
       title: 'tetris',
       localizationsDelegates: [
         S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
       ],
       navigatorObservers: [routeObserver],
       supportedLocales: S.delegate.supportedLocales,
@@ -62,9 +55,7 @@ class _HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //only Android/iOS support land mode
-    bool supportLandMode = Platform.isAndroid || Platform.isIOS;
-    bool land = supportLandMode &&
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    bool land = MediaQuery.of(context).orientation == Orientation.landscape;
 
     return land ? PageLand() : PagePortrait();
   }

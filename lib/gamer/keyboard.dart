@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_web/material.dart';
+import 'package:flutter_web/services.dart';
 
 import 'gamer.dart';
 
@@ -25,24 +25,27 @@ class _KeyboardControllerState extends State<KeyboardController> {
       return;
     }
 
-    final key = event.data.physicalKey;
+
+    final key = (event.data as RawKeyEventDataAndroid).keyCode;
+    debugPrint("key : ${key}");
+
     final game = Game.of(context);
 
-    if (key == PhysicalKeyboardKey.arrowUp) {
+    if (key == 38) {
       game.rotate();
-    } else if (key == PhysicalKeyboardKey.arrowDown) {
+    } else if (key == 40) {
       game.down();
-    } else if (key == PhysicalKeyboardKey.arrowLeft) {
+    } else if (key == 37) {
       game.left();
-    } else if (key == PhysicalKeyboardKey.arrowRight) {
+    } else if (key == 39) {
       game.right();
-    } else if (key == PhysicalKeyboardKey.space) {
+    } else if (key == 32) {
       game.drop();
-    } else if (key == PhysicalKeyboardKey.keyP) {
+    } else if (key == 80) {
       game.pauseOrResume();
-    } else if (key == PhysicalKeyboardKey.keyS) {
+    } else if (key == 80) {
       game.soundSwitch();
-    } else if (key == PhysicalKeyboardKey.keyR) {
+    } else if (key == 82) {
       game.reset();
     }
   }
