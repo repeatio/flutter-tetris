@@ -15,29 +15,37 @@ class StatusPanel extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(S.of(context).points,
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          SizedBox(height: 4),
-          Number(number: GameState.of(context).points),
-          SizedBox(height: 10),
-          Text(S.of(context).cleans,
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          SizedBox(height: 4),
-          Number(number: GameState.of(context).cleared),
-          SizedBox(height: 10),
-          Text(S.of(context).level,
-              style: TextStyle(fontWeight: FontWeight.bold)),
-          SizedBox(height: 4),
-          Number(number: GameState.of(context).level),
-          SizedBox(height: 10),
-          Text(S.of(context).next,
-              style: TextStyle(fontWeight: FontWeight.bold)),
+          _NumberStatusView(title: S.of(context).points, number: GameState.of(context).points),
+          _NumberStatusView(title: S.of(context).cleans, number: GameState.of(context).cleared),
+          _NumberStatusView(title: S.of(context).level, number: GameState.of(context).level),
+          Text(S.of(context).next, style: TextStyle(fontWeight: FontWeight.bold)),
           SizedBox(height: 4),
           _NextBlock(),
           Spacer(),
           _GameStatus(),
         ],
       ),
+    );
+  }
+}
+
+class _NumberStatusView extends StatelessWidget {
+  final String title;
+  final int number;
+
+  const _NumberStatusView({Key key, @required this.title, @required this.number}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
+        SizedBox(height: 4),
+        Number(number: number),
+        SizedBox(height: 10),
+      ],
     );
   }
 }
@@ -84,8 +92,8 @@ class _GameStatusState extends State<_GameStatus> {
   void initState() {
     super.initState();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      final now = DateTime.now();
       setState(() {
+        final now = DateTime.now();
         _colonEnable = !_colonEnable;
         _minute = now.minute;
         _hour = now.hour;

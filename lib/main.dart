@@ -13,7 +13,7 @@ import 'gamer/keyboard.dart';
 void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
   _disableDebugPrint();
-  runApp(MyApp());
+  runApp(TetrisApp());
 }
 
 void _disableDebugPrint() {
@@ -31,22 +31,15 @@ void _disableDebugPrint() {
 
 final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 
-class MyApp extends StatelessWidget {
+class TetrisApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'tetris',
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate
-      ],
+      localizationsDelegates: [S.delegate, GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate],
       navigatorObservers: [routeObserver],
       supportedLocales: S.delegate.supportedLocales,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: Scaffold(
         body: Sound(child: Game(child: KeyboardController(child: _HomePage()))),
       ),
@@ -63,8 +56,7 @@ class _HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     //only Android/iOS support land mode
     bool supportLandMode = Platform.isAndroid || Platform.isIOS;
-    bool land = supportLandMode &&
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    bool land = supportLandMode && MediaQuery.of(context).orientation == Orientation.landscape;
 
     return land ? PageLand() : PagePortrait();
   }

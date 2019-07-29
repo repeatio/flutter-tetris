@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tetris/generated/i18n.dart';
-import 'package:tetris/income/donation_dialog.dart';
 import 'package:tetris/main.dart';
 import 'package:tetris/panel/controller.dart';
 import 'package:tetris/panel/screen.dart';
@@ -20,18 +19,6 @@ class PagePortrait extends StatelessWidget {
           padding: MediaQuery.of(context).padding,
           child: Column(
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Spacer(),
-                  FlatButton(
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) => DonationDialog());
-                      },
-                      child: Text(S.of(context).reward))
-                ],
-              ),
               Spacer(),
               _ScreenDecoration(child: Screen(width: screenW)),
               Spacer(flex: 2),
@@ -54,14 +41,10 @@ class _ScreenDecoration extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(
-              color: const Color(0xFF987f0f), width: SCREEN_BORDER_WIDTH),
-          left: BorderSide(
-              color: const Color(0xFF987f0f), width: SCREEN_BORDER_WIDTH),
-          right: BorderSide(
-              color: const Color(0xFFfae36c), width: SCREEN_BORDER_WIDTH),
-          bottom: BorderSide(
-              color: const Color(0xFFfae36c), width: SCREEN_BORDER_WIDTH),
+          top: BorderSide(color: const Color(0xFF987f0f), width: SCREEN_BORDER_WIDTH),
+          left: BorderSide(color: const Color(0xFF987f0f), width: SCREEN_BORDER_WIDTH),
+          right: BorderSide(color: const Color(0xFFfae36c), width: SCREEN_BORDER_WIDTH),
+          bottom: BorderSide(color: const Color(0xFFfae36c), width: SCREEN_BORDER_WIDTH),
         ),
       ),
       child: Container(

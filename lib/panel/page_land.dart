@@ -32,16 +32,7 @@ class PageLand extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Row(
-                      children: <Widget>[
-                        Spacer(),
-                        FlatButton(
-                            onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => DonationDialog());
-                            },
-                            child: Text(S.of(context).reward))
-                      ],
+                      children: <Widget>[Spacer(), FlatButton(onPressed: () {}, child: Text(S.of(context).reward))],
                     ),
                     Spacer(),
                     DirectionController(),

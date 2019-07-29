@@ -21,7 +21,6 @@ class PlayerPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("size : $size");
     return SizedBox.fromSize(
       size: size,
       child: Container(
@@ -47,9 +46,7 @@ class _PlayerPad extends StatelessWidget {
       children: GameState.of(context).data.map((list) {
         return Row(
           children: list.map((b) {
-            return b == 1
-                ? const Brik.normal()
-                : b == 2 ? const Brik.highlight() : const Brik.empty();
+            return b == 1 ? const Brik.normal() : b == 2 ? const Brik.highlight() : const Brik.empty();
           }).toList(),
         );
       }).toList(),

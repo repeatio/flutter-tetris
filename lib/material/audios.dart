@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:soundpool/soundpool.dart';
 
+/// the sound effect of TerisGame
 class Sound extends StatefulWidget {
   final Widget child;
 
@@ -19,14 +20,7 @@ class Sound extends StatefulWidget {
   }
 }
 
-const _SOUNDS = [
-  'clean.mp3',
-  'drop.mp3',
-  'explosion.mp3',
-  'move.mp3',
-  'rotate.mp3',
-  'start.mp3'
-];
+const _SOUNDS = ['clean.mp3', 'drop.mp3', 'explosion.mp3', 'move.mp3', 'rotate.mp3', 'start.mp3'];
 
 class SoundState extends State<Sound> {
   Soundpool _pool;
